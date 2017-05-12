@@ -1,0 +1,66 @@
+<div class="login-body">
+    <div class="container-fluid">
+        <form role="presentation" action="" autocomplete="on" name="loginForm" (ngSubmit)="f.loginForm.valid && login()" #f="ngForm" novalidate>
+            <div class="form-signin loginWrapper">
+                <div class="titleLogo">
+                    <div class="logoWrapper">
+                        <div class="logoImgText">
+                            <span class="logoImg"><a class="logoImage">Great Buy</a></span>
+                            <span class="logoText">
+                              Great Buy
+                            </span>
+                        </div>
+                        <div class="clearFix"></div>
+                    </div>
+                    <h1 class="productName" aria-label="login">
+            			    <span>Master Data Management CE</span>
+            		    </h1>
+                </div>
+                <div class="loginInstruction">
+                  <p>
+                  <span>Please enter your user name, password, company code and click Login.</span> 
+                  </p>     
+                </div>
+                <!--User name row-->
+                <div [ngClass]="{ 'has-error': f.submitted && !credentials.username.valid }">
+                    <label for="usernameField" id="usernameText">
+                        <span class="locUserName">Username</span>
+                    </label>
+                    <div class="formField">
+                        <input type="text" id="usernameField" class="form-control" [(ngModel)]="credentials.username" name="credentials.username" #credentials.usernameername="ngModel" required>
+                    </div>
+                     <div *ngIf="f.submitted && !credentials.username.valid" class="helpBlock">Username is required</div>
+                </div>
+
+                <!--Password row-->
+                <div [ngClass]="{ 'has-error': f.submitted && !credentials.password.valid }">
+                    <label for="passwordField" id="passwordText">
+                        <span class="locPassword">Password</span>
+                    </label>
+                    <div class="formField">
+                        <input type="text" id="passwordField" class="form-control" name="credentials.password" [(ngModel)]="credentials.password" #credentials.password="ngModel" required>
+                    </div>
+                     <div *ngIf="f.submitted && !credentials.password" class="helpBlock">Password is required</div>
+                </div>
+
+                <!--Company row-->
+                <div [ngClass]="{ 'has-error': f.submitted && !credentials.company.valid }">
+                    <label for="companyField" id="companyText">
+                        <span class="locUserName">Company</span>
+                    </label>
+                    <div class="formField">
+                        <input type="text" id="companyField" class="form-control" name="credentials.company" [(ngModel)]="credentials.company" #credentials.company="ngModel" required>
+                    </div>
+                     <div *ngIf="f.submitted && !credentials.company" class="helpBlock">Company is required</div>
+                </div>
+                <button type='submit' class="btn btn-primary btn-block loc_login_btn loginButton" aria-label="loginbutton" [disabled]="f.loginForm.valid">Login <i class="fa fa-spinner" aria-hidden="true" *ngIf="loading"></i></button>
+                <div class="licenseTxt">
+                    © Copyright information for International Business Machine Corp., 2000-2017. All rights reserved. Licensed materials - property of IBM.
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>
+
+

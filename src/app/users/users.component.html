@@ -1,0 +1,30 @@
+<div *ngIf="successMessage" class="alert alert-success">{{ successMessage }}</div>
+<div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+ <div class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a routerLink="/" class="navbar-brand">My HTTP App</a>
+          </div>
+
+          <ul class="nav navbar-nav"> 
+            <li><a routerLink="/users">Users</a></li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li *ngIf="!isLoggedIn"><a routerLink="/login">Login</a></li>
+            <li *ngIf="isLoggedIn"><a (click)="logout()">Logout</a></li>
+          </ul>
+        </div>
+      </div>
+    <p><strong>{{idleState}}</strong></p>
+<p *ngIf="lastPing"><small>Last keepalive ping <strong>{{lastPing | amTimeAgo}}</strong></small></p>
+<button (click)="reset()" *ngIf="timedOut">Restart</button>
+<div class="modalWrapper">
+<p-dialog header="Title" [(visible)]="display"  [modal]="true">
+   <p>
+      You were idle too long. Normally you'd be logged out, but in this demo just do anything and you'll be reset.
+   </p>
+   <button type="text" (click)="continueSession()" pButton icon="fa-external-link-square" label="Show">Resume</button>
+    <button type="text" (click)="closeOrCancelHandler()" pButton icon="fa-external-link-square" label="Show">Logout</button>
+</p-dialog>
+</div>
